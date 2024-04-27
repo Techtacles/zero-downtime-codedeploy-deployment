@@ -45,5 +45,5 @@ module "codepipeline" {
   codebuild_project_name      = var.codebuild_project
   codedeploy_application_name = var.codedeploy_name
   deployment_group_name       = var.codedeploy_deployment_group_name
-
+  repo_arn                    = module.codecommit.repo_arn
 }

@@ -28,3 +28,8 @@ variable "deployment_group_name" {
   description = "Deployment group name"
 
 }
+variable "repo_arn" {
+  type        = string
+  description = "ARN for codecommit repo"
+
+}
