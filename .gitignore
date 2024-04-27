@@ -3,6 +3,7 @@
 *.lock.hcl
 *.tfvars
 .terraform
+terraform.tfstate.backup
 
 # Mac
 .DS_Store
