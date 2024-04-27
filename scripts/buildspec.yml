@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+
+    commands:
+      - echo "Installing dummy requirements"
+  
+  build:
+    commands:
+      - echo "Running tests and build"
+    
+  post_build:
+    commands:
+      - echo "Post build...."
+      
+      
+

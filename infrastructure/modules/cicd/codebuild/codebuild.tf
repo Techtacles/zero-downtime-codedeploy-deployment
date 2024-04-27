@@ -1,16 +1,28 @@
+module "codebuild_artifact_bucket" {
+  source          = "../artifacts/s3"
+  artifact_bucket = "zero-downtime-deployment-cb-artifact-bucket"
+
+}
+
+module "codebuild_logs" {
+  source = "../artifacts/cw"
+
+}
+
 resource "aws_codebuild_project" "codebuild_project" {
   name          = var.codebuild_project
   build_timeout = 5
   service_role  = aws_iam_role.codebuild_role.arn
-  depends_on    = [aws_codecommit_repository.codecommit, aws_s3_bucket.artifact_bucket]
+  depends_on    = [module.codebuild_artifact_bucket, module.codebuild_logs]
 
   artifacts {
-    type = "NO_ARTIFACTS"
+    type = "S3"
+    name = module.codebuild_artifact_bucket.s3_bucket_id
   }
 
   cache {
     type     = "S3"
-    location = aws_s3_bucket.artifact_bucket.bucket
+    location = module.codebuild_artifact_bucket.s3_bucket
   }
 
   environment {
@@ -24,19 +36,19 @@ resource "aws_codebuild_project" "codebuild_project" {
 
   logs_config {
     cloudwatch_logs {
-      group_name  = aws_cloudwatch_log_group.log_group.name
-      stream_name = aws_cloudwatch_log_stream.log_stream.name
+      group_name  = module.codebuild_logs.log_group
+      stream_name = module.codebuild_logs.log_stream
     }
 
     s3_logs {
       status   = "ENABLED"
-      location = "${aws_s3_bucket.artifact_bucket.id}/log"
+      location = "${module.codebuild_artifact_bucket.s3_bucket_id}/log"
     }
   }
 
   source {
     type      = "CODECOMMIT"
-    buildspec = file("${path.module}/../scripts/buildspec.yml")
+    buildspec = file("${path.root}/../scripts/buildspec.yml")
   }
 
   tags = {

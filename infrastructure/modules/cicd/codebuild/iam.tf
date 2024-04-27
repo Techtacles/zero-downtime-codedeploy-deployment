@@ -1,3 +1,4 @@
+# Codebuild
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
@@ -51,4 +52,3 @@ resource "aws_iam_role_policy" "codebuild_policy" {
   role   = aws_iam_role.codebuild_role.name
   policy = data.aws_iam_policy_document.example.json
 }
-
