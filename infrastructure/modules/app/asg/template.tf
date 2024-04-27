@@ -12,6 +12,10 @@ resource "aws_launch_template" "launch_template" {
     enabled = true
   }
 
+  iam_instance_profile {
+    name = aws_iam_instance_profile.test_profile.name
+  }
+
 
   tag_specifications {
     resource_type = "instance"
