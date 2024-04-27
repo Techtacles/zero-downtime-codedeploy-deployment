@@ -8,3 +8,8 @@ variable "tg_arn" {
   description = "ARN for the Target Group"
 
 }
+variable "alb_sg_id" {
+  type        = string
+  description = "SG ID for the ALB"
+
+}

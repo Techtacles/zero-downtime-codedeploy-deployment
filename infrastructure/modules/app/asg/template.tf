@@ -24,6 +24,7 @@ resource "aws_launch_template" "launch_template" {
       Environment = "Dev"
     }
   }
+  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
   user_data = filebase64("${path.root}/../scripts/userdata.sh")
 }

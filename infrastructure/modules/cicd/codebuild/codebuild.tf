@@ -16,8 +16,8 @@ resource "aws_codebuild_project" "codebuild_project" {
   depends_on    = [module.codebuild_artifact_bucket, module.codebuild_logs]
 
   artifacts {
-    type = "S3"
-    name = "artifact.jar"
+    type     = "S3"
+    name     = "artifact.jar"
     location = module.codebuild_artifact_bucket.s3_bucket_id
   }
 

@@ -33,8 +33,9 @@ data "aws_iam_policy_document" "ec2_policy_doc" {
 
     actions = [
       "s3:*",
+      "ec2:AmazonSSMManagedInstanceCore",
       "codedeploy:*"
-      
+
     ]
 
     resources = ["*"]

@@ -40,6 +40,8 @@ data "aws_iam_policy_document" "codepipeline_policy" {
     actions = [
       "codebuild:BatchGetBuilds",
       "codebuild:StartBuild",
+      "codecommit:*",
+      "codedeploy:*"
     ]
 
     resources = ["*"]

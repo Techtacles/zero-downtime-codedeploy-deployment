@@ -1,8 +1,8 @@
 
 module "codepipeline_artifact_bucket" {
-  source = "../artifacts/s3"
+  source          = "../artifacts/s3"
   artifact_bucket = "zero-downtime-deployment-cp-artifact-bucket"
-  
+
 }
 
 resource "aws_codepipeline" "codepipeline" {
