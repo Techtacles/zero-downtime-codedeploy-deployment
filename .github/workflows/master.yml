@@ -82,6 +82,9 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_WEB_IDENTITY_ROLE_ARN }}
         aws-region: us-east-1
+    
+    - name: Add safe config workspace
+      run: git config --global --add safe.directory /github/workspace
 
     - name: Sync up to CodeCommit
       uses: tsgit18/sync-up-to-codecommit-action@v1
