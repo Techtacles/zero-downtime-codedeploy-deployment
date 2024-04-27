@@ -59,9 +59,9 @@ jobs:
       working-directory: ./infrastructure
       run: terraform plan -lock=false -var-file="terraform.tfvars"
 
-    - name: Terraform apply 
+    - name: Terraform destroy 
       working-directory: ./infrastructure
-      run: terraform apply -lock=false -var-file="terraform.tfvars" --auto-approve
+      run: terraform destroy -lock=false -var-file="terraform.tfvars" --auto-approve
   
   push_to_codecommit:
     name: 'Push to Codecommit'
