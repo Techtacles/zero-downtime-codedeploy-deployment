@@ -14,12 +14,12 @@ phases:
     commands:
       - echo "Post build...."
   
-  artifacts:
-    files:
-      - '**/*'
-    base-directory: base_dir
-    name: build_output
-    discard-paths: no
+artifacts:
+  files:
+    - '**/*'
+  base-directory: base_dir
+  name: build_output
+  discard-paths: no
       
       
 
