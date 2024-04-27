@@ -6,4 +6,12 @@ resource "aws_security_group" "ec2_sg" {
     protocol        = "tcp"
     security_groups = [var.alb_sg_id]
   }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
 }
