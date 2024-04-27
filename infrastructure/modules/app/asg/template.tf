@@ -2,10 +2,10 @@ resource "aws_launch_template" "launch_template" {
   name = var.launch_template_name
 
 
-  image_id = data.aws_ami.linux_ami.image_id
+  image_id = data.aws_ami.ubuntu_ami.image_id
 
   instance_type = "t2.micro"
-  depends_on    = [data.aws_ami.linux_ami]
+  depends_on    = [data.aws_ami.ubuntu_ami]
 
 
   monitoring {
