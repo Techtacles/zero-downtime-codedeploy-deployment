@@ -34,6 +34,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Export Terraform TFVARS file
+      working-directory: ./infrastructure
       run: |
         echo "$TERRAFORM_VARIABLES" >> terraform.tfvars
       shell: bash
