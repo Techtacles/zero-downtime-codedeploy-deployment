@@ -31,8 +31,9 @@ resource "aws_codepipeline" "codepipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        RepositoryName = var.repository_name
-        BranchName     = "master"
+        RepositoryName       = var.repository_name
+        BranchName           = "master"
+        PollForSourceChanges = false
       }
 
     }
