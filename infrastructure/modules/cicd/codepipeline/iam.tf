@@ -41,7 +41,8 @@ data "aws_iam_policy_document" "codepipeline_policy" {
       "codebuild:BatchGetBuilds",
       "codebuild:StartBuild",
       "codecommit:*",
-      "codedeploy:*"
+      "codedeploy:*",
+      "s3:*"
     ]
 
     resources = ["*"]
