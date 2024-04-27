@@ -32,7 +32,7 @@ resource "aws_codepipeline" "codepipeline" {
 
       configuration = {
         RepositoryName = var.repository_name
-        BranchName     = "main"
+        BranchName     = "master"
       }
 
     }
