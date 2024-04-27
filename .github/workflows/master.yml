@@ -85,15 +85,14 @@ jobs:
         role-to-assume: ${{ secrets.AWS_WEB_IDENTITY_ROLE_ARN }}
         aws-region: us-east-1
     
-    - name: Add safe config workspace
+    - name: Sync to codecommit
       run: |
-        git config --global --add safe.directory *
+        git config --global --add safe.directory /github/workspace
+        git config --global credential.'https://git-codecommit.us-east-1.amazonaws.com'.helper '!aws codecommit credential-helper $@'
+        git config --global credential.UseHttpPath true
+        git remote add sync https://git-codecommit.us-east-1.amazonaws.com/v1/repos/${{ env.codecommit_repo }}
+        git push sync --mirror
 
-    - name: Sync up to CodeCommit
-      uses: afinkorea/sync-up-to-codecommit-action@v1
-      with:
-        repository_name: ${{ env.codecommit_repo }}
-        aws_region: us-east-1
-
+    
 
 
