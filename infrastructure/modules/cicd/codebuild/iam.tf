@@ -25,6 +25,7 @@ data "aws_iam_policy_document" "codebuild_policy_doc" {
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
       "logs:PutLogEvents",
+      "s3:*"
     ]
 
     resources = ["*"]
