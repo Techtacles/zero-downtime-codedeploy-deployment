@@ -12,10 +12,6 @@ resource "aws_launch_template" "launch_template" {
     enabled = true
   }
 
-  network_interfaces {
-    associate_public_ip_address = false
-  }
-
 
   tag_specifications {
     resource_type = "instance"

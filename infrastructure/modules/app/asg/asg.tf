@@ -7,7 +7,7 @@ resource "aws_autoscaling_group" "asg" {
 
   launch_template {
     id      = aws_launch_template.launch_template.id
-    version = "$Latest"
+    version = aws_launch_template.launch_template.latest_version
   }
 
   target_group_arns = [var.tg_arn]
