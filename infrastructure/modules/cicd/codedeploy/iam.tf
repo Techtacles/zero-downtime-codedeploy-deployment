@@ -44,6 +44,7 @@ data "aws_iam_policy_document" "codedeploy_policy_doc" {
       "ec2:DescribeSubnets",
       "ec2:DescribeSecurityGroups",
       "ec2:DescribeVpcs",
+      "codepipeline:*"
     ]
 
     resources = ["*"]
