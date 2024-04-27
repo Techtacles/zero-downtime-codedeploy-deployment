@@ -76,18 +76,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         role-to-assume: ${{ secrets.AWS_WEB_IDENTITY_ROLE_ARN }}
         aws-region: us-east-1
-    
-    - name: Add safe config workspace
-      run: git config --global --add safe.directory /github/workspace
 
     - name: Sync up to CodeCommit
-      uses: tsgit18/sync-up-to-codecommit-action@v1
+      uses: afinkorea/sync-up-to-codecommit-action@v1
       with:
         repository_name: ${{ env.codecommit_repo }}
         aws_region: us-east-1
