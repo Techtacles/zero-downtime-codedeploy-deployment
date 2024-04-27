@@ -20,10 +20,10 @@ resource "aws_codepipeline" "codepipeline" {
   }
 
   stage {
-    name = "Codecommit Source Stage"
+    name = "codecommit-src-stage"
 
     action {
-      name             = "Codecommit src"
+      name             = "codecommit-src"
       category         = "Source"
       owner            = "AWS"
       provider         = "CodeCommit"
@@ -61,7 +61,7 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Deploy"
 
     action {
-      name            = "CodeDeploy Deployment"
+      name            = "codedeploy-deployment"
       category        = "Deploy"
       owner           = "AWS"
       provider        = "CodeDeploy"

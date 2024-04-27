@@ -3,8 +3,8 @@ variable "launch_template_name" {
   description = "Set the name of your launch template"
 
 }
-variable "alb_id" {
+variable "tg_arn" {
   type        = string
-  description = "ID for the ALB"
+  description = "ARN for the Target Group"
 
 }

@@ -17,7 +17,8 @@ resource "aws_codebuild_project" "codebuild_project" {
 
   artifacts {
     type = "S3"
-    name = module.codebuild_artifact_bucket.s3_bucket_id
+    name = "artifact.jar"
+    location = module.codebuild_artifact_bucket.s3_bucket_id
   }
 
   cache {
@@ -49,6 +50,7 @@ resource "aws_codebuild_project" "codebuild_project" {
   source {
     type      = "CODECOMMIT"
     buildspec = file("${path.root}/../scripts/buildspec.yml")
+    location  = var.codecommit_repo_name
   }
 
   tags = {

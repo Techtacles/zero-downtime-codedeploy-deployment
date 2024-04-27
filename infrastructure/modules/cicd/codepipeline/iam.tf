@@ -1,7 +1,20 @@
 # Code pipeline
 resource "aws_iam_role" "codepipeline_role" {
   name               = "codepipeline-role"
-  assume_role_policy = data.aws_iam_policy_document.codepipeline_policy.json
+  assume_role_policy = data.aws_iam_policy_document.codepipeline_assume_role.json
+}
+
+data "aws_iam_policy_document" "codepipeline_assume_role" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["codepipeline.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
 }
 
 data "aws_iam_policy_document" "codepipeline_policy" {

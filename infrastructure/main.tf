@@ -5,9 +5,10 @@ module "codecommit" {
 }
 
 module "codebuild" {
-  source            = "./modules/cicd/codebuild"
-  codebuild_project = var.codebuild_project
-  depends_on        = [module.codecommit]
+  source               = "./modules/cicd/codebuild"
+  codebuild_project    = var.codebuild_project
+  codecommit_repo_name = module.codecommit.repository_name
+  depends_on           = [module.codecommit]
 
 }
 
@@ -21,7 +22,7 @@ module "alb" {
 module "asg" {
   source               = "./modules/app/asg"
   launch_template_name = var.launch_template_name
-  alb_id               = module.alb.alb_id
+  tg_arn               = module.alb.tg_arn
   depends_on           = [module.alb]
 
 }

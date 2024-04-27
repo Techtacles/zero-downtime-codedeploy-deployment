@@ -3,6 +3,11 @@ variable "codebuild_project" {
   description = "This is the codebuild project name"
 
 }
+
+variable "codecommit_repo_name" {
+  type = string
+
+}
 # variable "artifact_bucket" {
 #   type        = string
 #   description = "This is Artifact bucket for codebuild project"
