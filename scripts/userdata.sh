@@ -8,5 +8,3 @@ chmod +x ./install
 sudo ./install auto
 systemctl start codedeploy-agent
 
-sudo apt-get install nginx -y
-sudo systemctl start nginx
