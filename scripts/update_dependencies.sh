@@ -1,1 +1,1 @@
-sudo yum update
+sudo apt update

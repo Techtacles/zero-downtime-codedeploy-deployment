@@ -1,1 +1,1 @@
-sudo systemctl start httpd
+sudo systemctl start apache2
