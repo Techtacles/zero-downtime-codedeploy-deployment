@@ -12,19 +12,19 @@ module "codebuild" {
 
 }
 
-module "alb" {
-  source   = "./modules/app/alb"
-  alb_name = var.alb_name
-  vpc_id   = var.vpc_id
+# module "alb" {
+#   source   = "./modules/app/alb"
+#   alb_name = var.alb_name
+#   vpc_id   = var.vpc_id
 
-}
+# }
 
 module "asg" {
   source               = "./modules/app/asg"
   launch_template_name = var.launch_template_name
   tg_arn               = module.alb.tg_arn
   alb_sg_id            = module.alb.sg_id
-  depends_on           = [module.alb]
+  #depends_on           = [module.alb]
 
 }
 
@@ -33,8 +33,8 @@ module "codedeploy" {
   codedeploy_name                  = var.codedeploy_name
   codedeploy_deployment_group_name = var.codedeploy_deployment_group_name
   asg                              = [module.asg.asg_name]
-  alb_name                         = module.alb.alb_name
-  depends_on                       = [module.alb, module.asg]
+  #alb_name                         = module.alb.alb_name
+  #depends_on                       = [module.alb, module.asg]
 
 }
 
