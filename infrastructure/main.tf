@@ -22,7 +22,7 @@ module "codebuild" {
 module "asg" {
   source               = "./modules/app/asg"
   launch_template_name = var.launch_template_name
-  tg_arn               = module.alb.tg_arn
+  #tg_arn               = module.alb.tg_arn
   #alb_sg_id            = module.alb.sg_id
   #depends_on           = [module.alb]
 
