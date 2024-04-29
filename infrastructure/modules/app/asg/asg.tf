@@ -1,4 +1,5 @@
 resource "aws_autoscaling_group" "asg" {
+  name               = "zero-downtime-deployment-asg-name"
   desired_capacity   = 1
   max_size           = 2
   min_size           = 1
