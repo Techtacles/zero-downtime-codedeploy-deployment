@@ -35,7 +35,11 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
       action = "TERMINATE"
     }
   }
-
+  ec2_tag_filter {
+    key   = "Environment"
+    value = "DevInstance"
+    type  = "KEY_AND_VALUE"
+  }
   auto_rollback_configuration {
     enabled = true
     events  = ["DEPLOYMENT_FAILURE"]
