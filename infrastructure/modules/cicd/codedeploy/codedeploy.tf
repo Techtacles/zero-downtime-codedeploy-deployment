@@ -9,6 +9,9 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
   deployment_group_name = var.codedeploy_deployment_group_name
   service_role_arn      = aws_iam_role.codedeploy_role.arn
   autoscaling_groups    = var.asg
+  lifecycle {
+    ignore_changes = [autoscaling_groups]
+  }
 
   deployment_style {
     deployment_option = "WITH_TRAFFIC_CONTROL"
@@ -27,7 +30,7 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
     }
 
     green_fleet_provisioning_option {
-      action = "DISCOVER_EXISTING"
+      action = "COPY_AUTO_SCALING_GROUP"
     }
 
     terminate_blue_instances_on_deployment_success {
