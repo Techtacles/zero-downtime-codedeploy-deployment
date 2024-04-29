@@ -16,8 +16,8 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
   }
 
   load_balancer_info {
-    elb_info {
-      name = var.alb_name
+    target_group_info {
+      name = var.tg_name
     }
   }
 

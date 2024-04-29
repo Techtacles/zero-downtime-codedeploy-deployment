@@ -18,6 +18,11 @@ output "tg_arn" {
 
 }
 
+output "tg_name" {
+  value = aws_lb_target_group.target_group.name
+
+}
+
 output "sg_id" {
   value = aws_security_group.lb_sg.id
 

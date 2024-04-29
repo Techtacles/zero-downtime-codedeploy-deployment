@@ -33,7 +33,7 @@ module "codedeploy" {
   codedeploy_name                  = var.codedeploy_name
   codedeploy_deployment_group_name = var.codedeploy_deployment_group_name
   asg                              = [module.asg.asg_name]
-  alb_name                         = module.alb.alb_name
+  tg_name                          = module.alb.tg_name
   depends_on                       = [module.alb, module.asg]
 
 }
