@@ -23,16 +23,21 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
 
   blue_green_deployment_config {
     deployment_ready_option {
-      action_on_timeout    = "CONTINUE_DEPLOYMENT"
+      action_on_timeout = "CONTINUE_DEPLOYMENT"
     }
 
     green_fleet_provisioning_option {
-      action = "COPY_AUTO_SCALING_GROUP"
+      action = "DISCOVER_EXISTING"
     }
 
     terminate_blue_instances_on_deployment_success {
       action = "TERMINATE"
     }
+  }
+  ec2_tag_filter {
+    key   = "Environment"
+    value = "DevInstance"
+    type  = "KEY_AND_VALUE"
   }
   auto_rollback_configuration {
     enabled = true

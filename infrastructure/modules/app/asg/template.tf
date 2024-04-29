@@ -21,7 +21,7 @@ resource "aws_launch_template" "launch_template" {
     resource_type = "instance"
 
     tags = {
-      Environment = "Dev"
+      Environment = "DevInstance"
     }
   }
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
