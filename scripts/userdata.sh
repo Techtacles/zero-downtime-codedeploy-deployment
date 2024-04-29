@@ -8,5 +8,3 @@ chmod +x ./install
 sudo ./install auto
 systemctl start codedeploy-agent
 
-sudo apt -y install apache2
-systemctl start apache2
