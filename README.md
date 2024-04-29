@@ -13,13 +13,13 @@ This is a high level workflow of how the end to end architecture is.
 **Github Actions job**
 ![](images/github_actions_cicd.png)
 
-**Codepipeline**
+**Codepipeline** 
 ![](images/codepipeline.png)
 
 **Final Deployment**
 ![](images/final_deployed_version.png)
 
-**Folder Explanation**
+**Folder Explanation** <br>
 .github/workflows: This contains the CICD jobs and stages for Github Actions. It contains the job for building the resources and the job for pushing to codecommit.
 
 app_code: This contains the html file that was used for testing the deployment
@@ -28,5 +28,5 @@ infrastructure: This contains all the terraform modules and resources.
 
 scripts: This contains all the scripts that was used such as the userdata.sh for our ec2 instances, deployment scripts which the appspec.yml uses for codedeploy, buildspec.yml for codebuild etc.
 
-**Conclusion**
+**Conclusion** <br>
 Further improvements will be made at a latter time. I'd appreciate any feedbacks or comments.
