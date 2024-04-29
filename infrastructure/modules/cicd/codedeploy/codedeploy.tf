@@ -9,9 +9,7 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
   deployment_group_name = var.codedeploy_deployment_group_name
   service_role_arn      = aws_iam_role.codedeploy_role.arn
   autoscaling_groups    = var.asg
-  lifecycle {
-    ignore_changes = [autoscaling_groups]
-  }
+
 
   deployment_style {
     deployment_option = "WITH_TRAFFIC_CONTROL"
@@ -37,11 +35,7 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
       action = "TERMINATE"
     }
   }
-  ec2_tag_filter {
-    key   = "Environment"
-    value = "DevInstance"
-    type  = "KEY_AND_VALUE"
-  }
+
   auto_rollback_configuration {
     enabled = true
     events  = ["DEPLOYMENT_FAILURE"]
