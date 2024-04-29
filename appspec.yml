@@ -4,6 +4,16 @@ os: linux
 files:
   - source: /app_code/index.html
     destination: /var/www/html/
+  - source: /scripts
+    destination: /var/www/html/scripts
+    
+permissions:
+  - object: /var/www/html/scripts
+    pattern: "*.sh"
+    owner: root
+    group: root
+    mode: 777
+
 file_exists_behavior: OVERWRITE
   
 hooks:

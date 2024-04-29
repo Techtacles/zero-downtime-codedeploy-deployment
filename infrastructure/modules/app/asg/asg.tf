@@ -10,10 +10,10 @@ resource "aws_autoscaling_group" "asg" {
     version = aws_launch_template.launch_template.latest_version
   }
 
-  #target_group_arns = [var.tg_arn]
+  target_group_arns = [var.tg_arn]
 }
 
-# resource "aws_autoscaling_attachment" "asg_alb_attachment" {
-#   autoscaling_group_name = aws_autoscaling_group.asg.id
-#   lb_target_group_arn    = var.tg_arn
-# }
+resource "aws_autoscaling_attachment" "asg_alb_attachment" {
+  autoscaling_group_name = aws_autoscaling_group.asg.id
+  lb_target_group_arn    = var.tg_arn
+}

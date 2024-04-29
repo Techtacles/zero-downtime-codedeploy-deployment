@@ -15,11 +15,11 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
     deployment_type   = "BLUE_GREEN"
   }
 
-  # load_balancer_info {
-  #   elb_info {
-  #     name = var.alb_name
-  #   }
-  # }
+  load_balancer_info {
+    elb_info {
+      name = var.alb_name
+    }
+  }
 
   blue_green_deployment_config {
     deployment_ready_option {

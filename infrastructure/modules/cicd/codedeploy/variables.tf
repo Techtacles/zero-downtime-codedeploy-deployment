@@ -14,7 +14,7 @@ variable "asg" {
   description = "This is a list of all the autoscaling groups"
 
 }
-# variable "alb_name" {
-#   type = string
+variable "alb_name" {
+  type = string
 
-# }
+}
