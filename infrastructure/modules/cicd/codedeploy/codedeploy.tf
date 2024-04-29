@@ -35,14 +35,22 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
       action = "TERMINATE"
     }
   }
+
   ec2_tag_filter {
     key   = "Environment"
     value = "DevInstance"
     type  = "KEY_AND_VALUE"
   }
+
   auto_rollback_configuration {
     enabled = true
     events  = ["DEPLOYMENT_FAILURE"]
+  }
+
+  trigger_configuration {
+    trigger_events     = ["DeploymentFailure"]
+    trigger_name       = "email-trigger"
+    trigger_target_arn = aws_sns_topic.sns_topic.arn
   }
 
 }
