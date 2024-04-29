@@ -2,7 +2,7 @@ resource "aws_autoscaling_group" "asg" {
   name               = "zero-downtime-deployment-asg-name"
   desired_capacity   = 1
   max_size           = 2
-  min_size           = 1
+  min_size           = 0
   availability_zones = ["us-east-1a", "us-east-1b"]
   depends_on         = [aws_launch_template.launch_template]
 
